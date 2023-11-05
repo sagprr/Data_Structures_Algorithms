@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int x;
+    cin >> x;
+
+    int arr[x];
+    for(int i=0;i<x;i++)
+    {
+        cin >> arr[i];
+    }
+
+
+    for(int i=0;i<x;i++)
+    {
+        int curr = arr[i];
+        int j=i-1;
+        while( (arr[j]>curr) && j>=0 )
+        {
+            arr[j+1] = arr[j];
+            j--;
+        }
+        arr[j+1] = curr;
+    }
+
+    for(int i=0;i<x;i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+// MORE OPTIMIZED THAN BUBBLE 
+
+
+}
+
+
+
+
+
+ 
