@@ -1,53 +1,76 @@
-#include <iostream>
-#include <climits>
+#include<iostream>
+#include<algorithm>
 using namespace std;
 
-int binarysearch(int arr[], int n, int key)
+// void printArray(int arr[],int size)
+// {
+//     for(int i=0;i<=size;i++)
+//     {
+//         cout << arr[i] << " ";
+//     }
+// }
+
+int binarySearch(int arr[],int start , int end, int ele)
 {
-    int s = 0;
-    int e = n;
+    start = 0;
+    int mid =0;
 
-    while (s <= e)
+    while(start<=end)
+
     {
-        int mid = s + (e - s) / 2;
-
-        if (arr[mid] == key)
+        mid = start + (end - start) / 2;
+        if(arr[mid]==ele)
         {
             return mid;
         }
 
-        else if (arr[mid] < key)
+        else if ( arr[mid] < ele)
         {
-            e = mid - 1;
+            start = mid+1;
         }
 
-        else
-        {
-            s = mid + 1;
+        else{
+            end = mid-1;
         }
+
     }
 
     return -1;
 }
 
+
 int main()
 {
     int x;
+    cout << "Enter the Length of Array";
     cin >> x;
+    int arr[x]; 
 
-    int arr[x];
-    for (int i = 0; i < x; i++)
+    int n;
+    cin >> n;
+
+    for(int i=0;i<x;i++)
     {
         cin >> arr[i];
     }
 
-    cout << "Enter key: " << endl;
-    int key;
-    cin >> key;
 
-    cout << binarysearch(arr, x, key) << endl;
+    cout << endl;
+    // printArray(arr,x);
+    int res =  binarySearch(arr,0,x-1,n);
+
+
+    if(res==1)
+    {
+        cout << "found " << endl;
+    }
+
+    if ( res == -1)
+    {
+        cout << "not found " << endl;
+    }
+
+
+
+
 }
-
-
-
-//COMPLEXITY - O(LOGN)
